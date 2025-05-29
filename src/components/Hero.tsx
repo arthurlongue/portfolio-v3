@@ -2,10 +2,10 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'next-i18next'; // Re-add useTranslation
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common'); // Specify namespace if needed
 
   return (
     <section className="hero min-h-screen bg-base-200">

@@ -1,18 +1,21 @@
 // src/app/page.tsx
-import React, { useContext } from "react";
-import { MyContext } from "@/app/layout";
+import React from "react";
+import initTranslations from "../lib/i18n/server"; // Adjusted path
+import nextI18NextConfig from "../../next-i18next.config.js"; // To get defaultLocale as fallback
 
-interface HomeProps {
-  [key: string]: unknown;
-}
+// interface HomeProps { // Removing HomeProps as params are removed
+//   params: { lang: string };
+// }
 
-export default function Home({}: HomeProps) {
-  const { message } = useContext(MyContext);
+export default async function Home() { // Removed params from function signature
+  // Use defaultLocale as params are not used.
+  const lang = nextI18NextConfig.i18n.defaultLocale;
+  const { t } = await initTranslations(lang, ['common']);
 
   return (
     <>
       <div>
-        <h1>{message}</h1>
+        <h1>{t('welcomeMessage')}</h1> {/* Using a key from common.json */}
       </div>
     </>
   );

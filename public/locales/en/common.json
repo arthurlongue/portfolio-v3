@@ -5,5 +5,21 @@
   "myApp": "MyApp",
   "portuguese": "Portuguese",
   "english": "English",
-  "german": "German"
+  "german": "German",
+  "footer.services": "Services",
+  "footer.branding": "Branding",
+  "footer.design": "Design",
+  "footer.marketing": "Marketing",
+  "footer.advertisement": "Advertisement",
+  "footer.company": "Company",
+  "footer.about_us": "About us",
+  "footer.contact": "Contact",
+  "footer.jobs": "Jobs",
+  "footer.press_kit": "Press kit",
+  "footer.legal": "Legal",
+  "footer.terms_of_use": "Terms of use",
+  "footer.privacy_policy": "Privacy policy",
+  "footer.cookie_policy": "Cookie policy",
+  "welcomeMessage": "Welcome to My Portfolio!",
+  "toggleTheme": "Theme: {{theme}}"
 }

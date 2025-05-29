@@ -5,5 +5,21 @@
   "myApp": "MinhaApp",
   "portuguese": "Português",
   "english": "Inglês",
-  "german": "Alemão"
+  "german": "Alemão",
+  "footer.services": "Serviços",
+  "footer.branding": "Marca",
+  "footer.design": "Design",
+  "footer.marketing": "Marketing",
+  "footer.advertisement": "Publicidade",
+  "footer.company": "Empresa",
+  "footer.about_us": "Sobre nós",
+  "footer.contact": "Contato",
+  "footer.jobs": "Vagas",
+  "footer.press_kit": "Kit de imprensa",
+  "footer.legal": "Legal",
+  "footer.terms_of_use": "Termos de uso",
+  "footer.privacy_policy": "Política de privacidade",
+  "footer.cookie_policy": "Política de cookies",
+  "welcomeMessage": "Bem-vindo ao Meu Portfólio!",
+  "toggleTheme": "Tema: {{theme}}"
 }
