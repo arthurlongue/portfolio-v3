@@ -1,3 +1,5 @@
+import { Author } from "../../lib/ghost";
+
 export type Blog = {
   title: string;
   description: string;
@@ -5,6 +7,15 @@ export type Blog = {
   slug: string;
   image: string;
   tags?: string[];
-  // rest
-  [key: string]: any;
+  html?: string;
+  plaintext?: string;
+  reading_time?: number;
+  authors?: Author[];
+  id?: string;
+  featured?: boolean;
+  created_at?: string | null;
+  updated_at?: string | null;
+  excerpt?: string | null;
+  meta_title?: string | null;
+  meta_description?: string | null;
 };

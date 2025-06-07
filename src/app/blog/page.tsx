@@ -1,11 +1,10 @@
+import { Blogs } from "@/components/Blogs";
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Highlight } from "@/components/Highlight";
 import { Paragraph } from "@/components/Paragraph";
-import { Products } from "@/components/Products";
-import { getAllBlogs } from "../../../lib/getAllBlogs";
-import { Blogs } from "@/components/Blogs";
 import { Metadata } from "next";
+import { getAllBlogs } from "../../../lib/getAllBlogs";
 
 export const metadata: Metadata = {
   title: "Blogs | John Doe",
@@ -15,7 +14,6 @@ export const metadata: Metadata = {
 
 export default async function Blog() {
   const blogs = await getAllBlogs();
-  const data = blogs.map(({ component, ...meta }) => meta);
 
   return (
     <Container>
@@ -25,7 +23,7 @@ export default async function Blog() {
         Ever since <Highlight> I was a kid</Highlight>, I&apos;ve been
         fascinated by technology.
       </Paragraph>
-      <Blogs blogs={data} />
+      <Blogs blogs={blogs} />
     </Container>
   );
 }
