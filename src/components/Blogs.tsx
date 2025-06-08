@@ -1,11 +1,11 @@
 "use client";
+import { Heading } from "@/components/Heading";
+import { Paragraph } from "@/components/Paragraph";
 import { Blog } from "@/types/blog";
-import Image from "next/image";
-import React, { useState } from "react";
-import { Heading } from "./Heading";
-import { Paragraph } from "./Paragraph";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
   const [hovered, setHovered] = useState<string | null>(null);

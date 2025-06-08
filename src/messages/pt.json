@@ -1,0 +1,38 @@
+{
+  "Navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "articles": "Artigos",
+    "contact": "Contato",
+    "socials": "Redes Sociais",
+    "readResume": "Ver Currículo"
+  },
+  "Home": {
+    "greeting": "Olá! Eu sou o John",
+    "intro1": "Sou um desenvolvedor full-stack que adora {highlight} e aplicações web que podem impactar milhões de vidas",
+    "buildingProducts": "construir produtos",
+    "intro2": "Sou um engenheiro de software sênior com {highlight} construindo aplicações web escaláveis que são otimizadas para performance e visualmente atrativas.",
+    "experience": "7 anos de experiência",
+    "workingOn": "No que tenho trabalhado"
+  },
+  "About": {
+    "title": "Sobre",
+    "description": "Saiba mais sobre John Doe"
+  },
+  "Projects": {
+    "title": "Projetos",
+    "description": "Aqui estão alguns dos meus projetos"
+  },
+  "Blog": {
+    "title": "Artigos",
+    "description": "Meus pensamentos sobre tecnologia e vida"
+  },
+  "Contact": {
+    "title": "Contato",
+    "description": "Entre em contato comigo"
+  },
+  "Common": {
+    "developer": "Desenvolvedor"
+  }
+}

@@ -20,7 +20,19 @@
       "Bash(npx:*)",
       "Bash(pnpm update:*)",
       "Bash(pnpm install:*)",
-      "Bash(pnpm:*)"
+      "Bash(pnpm:*)",
+      "Bash(npm run lint)",
+      "Bash(pnpm add:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(*:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pkill:*)",
+      "Bash(curl:*)"
     ],
     "deny": []
   }

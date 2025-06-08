@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.34.0",
+    "@tailwindcss/postcss": "^4.1.8",
     "@tailwindcss/typography": "^0.5.16",
     "@ts-ghost/content-api": "^4.1.0",
     "@types/react": "^19.1.6",
@@ -20,6 +21,8 @@
     "eslint-config-next": "15.3.3",
     "framer-motion": "^12.16.0",
     "next": "15.3.3",
+    "next-intl": "^4.1.0",
+    "nuqs": "^2.4.3",
     "postcss": "^8.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

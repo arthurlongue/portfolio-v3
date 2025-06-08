@@ -4,54 +4,48 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-- `pnpm dev` - Start development server at http://localhost:3000
-- `pnpm build` - Build production bundle
-- `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint to check code quality
+- `npm run dev` or `pnpm dev` - Start development server
+- `npm run build` - Build production version
+- `npm run start` - Start production server  
+- `npm run lint` - Run ESLint
 
 ## Architecture Overview
 
-This is a Next.js 15 portfolio website with Ghost CMS integration for blog management. The project uses TypeScript, Tailwind CSS, and Framer Motion for animations.
+This is a Next.js 15 portfolio website template called "Sidefolio" with the following key architectural patterns:
 
-### Key Architecture Patterns
+### Internationalization Structure
+- **Next-intl**: Internationalization with locale-based routing at `/[locale]/*`
+- **Root redirect**: Base `/` redirects to `/en` default locale
+- **Localized routing**: All pages under `src/app/[locale]/` with dynamic locale parameter
 
-**App Router Structure**: Uses Next.js 13+ app directory with file-based routing:
-- `/blog/[slug]` - Dynamic blog post pages with Ghost CMS integration
-- `/projects/[slug]` - Dynamic project detail pages
-- Static pages: `/about`, `/contact`, `/resume`
+### Layout Structure
+- **Sidebar navigation**: Fixed sidebar with main content area (layout in `src/app/[locale]/layout.tsx`)
+- **App Router**: Next.js 15 app directory with internationalized routing
+- **Component library**: Reusable UI components in `src/components/`
 
-**Layout System**: Sidebar-based layout with mobile responsiveness:
-- `Sidebar` component provides main navigation
-- Content area with rounded corners and responsive behavior
-- Layout defined in `src/app/layout.tsx` with persistent sidebar
+### Content Management System
+- **Ghost CMS Integration**: Primary blog content via `@ts-ghost/content-api`
+  - Type-safe API wrapper in `lib/ghost.ts` with full CRUD operations
+  - Environment variables: `GHOST_URL` and `GHOST_CONTENT_API_KEY`
+  - Graceful fallback to demo content when Ghost not configured
+  - Dynamic routing at `/[locale]/blog/[slug]`
+- **Static Projects**: Project data in `src/constants/products.tsx` with routing at `/[locale]/projects/[slug]`
 
-**Ghost CMS Integration**: 
-- Type-safe Ghost API wrapper in `lib/ghost.ts` using `@ts-ghost/content-api`
-- Fallback demo content when Ghost is not configured
-- Environment variables: `GHOST_URL` and `GHOST_CONTENT_API_KEY`
-- Image optimization configured for Ghost domains in `next.config.mjs`
+### Technology Stack
+- **Styling**: TailwindCSS v4 with custom configuration
+- **Animation**: Framer Motion for component animations  
+- **Icons**: Tabler Icons library
+- **Typography**: Custom CalSans-SemiBold and Inter fonts
+- **Image Optimization**: Next.js Image with remote patterns for Ghost, Unsplash, Cloudinary
 
-**Component Architecture**:
-- Reusable UI components in `src/components/` (Container, Heading, Paragraph, etc.)
-- Static data in `src/constants/` (products, navigation, social links, timeline)
-- Type definitions in `src/types/` for Ghost content and component props
+### Data Architecture
+- **Blog data**: Fetched via `src/lib/getAllBlogs.ts` with Ghost API integration
+- **Type safety**: Blog and Product types defined in `src/types/`
+- **Static content**: Navigation links, social links, and timeline data in `src/constants/`
 
-**Path Alias**: Uses `@/*` for `./src/*` imports defined in `tsconfig.json`
-
-### Blog System Migration
-
-The project migrated from MDX to Ghost CMS. See `GHOST_SETUP.md` for complete integration instructions. The blog system:
-- Fetches posts dynamically from Ghost API
-- Supports tags, authors, and featured posts
-- Generates static params for SEO optimization
-- Falls back to demo content during development
-
-### Project Structure
-
-- `/lib/` - Ghost API utilities and helper functions
-- `/src/app/` - Next.js app router pages
-- `/src/components/` - Reusable React components  
-- `/src/constants/` - Static data and configuration
-- `/public/images/` - Static assets and project thumbnails
-
-The portfolio showcases projects defined in `src/constants/products.tsx` with thumbnail images and detailed content pages.
+### Key Files
+- `src/lib/ghost.ts` - Type-safe Ghost CMS API wrapper with utilities
+- `src/lib/getAllBlogs.ts` - Blog data fetching with fallback handling
+- `src/constants/products.tsx` - Static project data with embedded content
+- `next.config.mjs` - Next-intl plugin and image optimization config
+- `GHOST_SETUP.md` - Complete Ghost CMS integration guide

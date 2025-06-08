@@ -1,4 +1,4 @@
-import { Author } from "../../lib/ghost";
+import { Author } from "@/lib/ghost";
 
 export type Blog = {
   title: string;

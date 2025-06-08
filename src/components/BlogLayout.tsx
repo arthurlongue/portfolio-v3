@@ -1,13 +1,12 @@
 "use client";
-import Head from "next/head";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { formatDate } from "../../lib/formatDate";
+import { Container } from "@/components/Container";
+import { Heading } from "@/components/Heading";
+import { Paragraph } from "@/components/Paragraph";
 import { Prose } from "@/components/Prose";
-import { Container } from "./Container";
-import { Heading } from "./Heading";
+import { formatDate } from "@/lib/formatDate";
+import Image from "next/image";
 import Link from "next/link";
-import { Paragraph } from "./Paragraph";
+import { useRouter } from "next/navigation";
 
 function ArrowLeftIcon(props: any) {
   return (

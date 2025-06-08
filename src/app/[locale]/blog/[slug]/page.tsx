@@ -1,11 +1,11 @@
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Paragraph } from "@/components/Paragraph";
+import { formatDate } from "@/lib/formatDate";
+import { getAllBlogs, getBlogBySlug } from "@/lib/getAllBlogs";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { formatDate } from "../../../../lib/formatDate";
-import { getAllBlogs, getBlogBySlug } from "../../../../lib/getAllBlogs";
 
 interface Props {
   params: {

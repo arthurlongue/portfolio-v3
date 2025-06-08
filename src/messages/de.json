@@ -1,0 +1,38 @@
+{
+  "Navigation": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "projects": "Projekte",
+    "articles": "Artikel",
+    "contact": "Kontakt",
+    "socials": "Soziale Medien",
+    "readResume": "Lebenslauf lesen"
+  },
+  "Home": {
+    "greeting": "Hallo! Ich bin John",
+    "intro1": "Ich bin ein Full-Stack-Entwickler, der es liebt, {highlight} und Web-Apps zu erstellen, die Millionen von Leben beeinflussen können",
+    "buildingProducts": "Produkte zu entwickeln",
+    "intro2": "Ich bin ein Senior-Software-Ingenieur mit {highlight} beim Erstellen skalierbarer Web-Apps, die performance-optimiert und gut aussehend sind.",
+    "experience": "7 Jahren Erfahrung",
+    "workingOn": "Woran ich gearbeitet habe"
+  },
+  "About": {
+    "title": "Über mich",
+    "description": "Erfahren Sie mehr über John Doe"
+  },
+  "Projects": {
+    "title": "Projekte",
+    "description": "Hier sind einige meiner Projekte"
+  },
+  "Blog": {
+    "title": "Artikel",
+    "description": "Meine Gedanken zu Technologie und Leben"
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "description": "Kontaktieren Sie mich"
+  },
+  "Common": {
+    "developer": "Entwickler"
+  }
+}

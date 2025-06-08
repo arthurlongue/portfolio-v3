@@ -1,6 +1,5 @@
+import { Heading } from "@/components/Heading";
 import Image from "next/image";
-import React from "react";
-import { Heading } from "./Heading";
 import { twMerge } from "tailwind-merge";
 
 export const TechStack = () => {

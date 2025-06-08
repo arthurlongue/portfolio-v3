@@ -1,17 +1,19 @@
 "use client";
+import { Badge } from "@/components/Badge";
+import { Heading } from "@/components/Heading";
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { navlinks } from "@/constants/navlinks";
+import { socials } from "@/constants/socials";
+import { isMobile } from "@/lib/utils";
 import { Navlink } from "@/types/navlink";
+import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from 'next-intl';
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { Heading } from "./Heading";
-import { socials } from "@/constants/socials";
-import { Badge } from "./Badge";
-import { AnimatePresence, motion } from "framer-motion";
-import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
-import { isMobile } from "@/lib/utils";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? false : true);
@@ -31,8 +33,13 @@ export const Sidebar = () => {
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
-            <div onClick={() => isMobile() && setOpen(false)}>
-              <Badge href="/resume" text="Read Resume" />
+            <div className="space-y-3">
+              <div className="px-2">
+                <LanguageSwitcher />
+              </div>
+              <div onClick={() => isMobile() && setOpen(false)}>
+                <ResumeButton />
+              </div>
             </div>
           </motion.div>
         )}
@@ -53,33 +60,49 @@ export const Navigation = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const pathname = usePathname();
+  const t = useTranslations('Navigation');
 
-  const isActive = (href: string) => pathname === href;
+  const currentLocale = pathname.split('/')[1] || 'en';
+
+  const isActive = (href: string) => {
+    const localizedHref = `/${currentLocale}${href === '/' ? '' : href}`;
+    return pathname === localizedHref;
+  };
+
+  const getTranslationKey = (href: string) => {
+    if (href === '/') return 'home';
+    const path = href.split('/').pop();
+    if (path === 'blog') return 'articles';
+    return path || 'home';
+  };
 
   return (
     <div className="flex flex-col space-y-1 my-10 relative z-[100]">
-      {navlinks.map((link: Navlink) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          onClick={() => isMobile() && setOpen(false)}
-          className={twMerge(
-            "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
-            isActive(link.href) && "bg-white shadow-lg text-primary"
-          )}
-        >
-          <link.icon
+      {navlinks.map((link: Navlink) => {
+        const localizedHref = `/${currentLocale}${link.href === '/' ? '' : link.href}`;
+        return (
+          <Link
+            key={link.href}
+            href={localizedHref}
+            onClick={() => isMobile() && setOpen(false)}
             className={twMerge(
-              "h-4 w-4 flex-shrink-0",
-              isActive(link.href) && "text-sky-500"
+              "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
+              isActive(link.href) && "bg-white shadow-lg text-primary"
             )}
-          />
-          <span>{link.label}</span>
-        </Link>
-      ))}
+          >
+            <link.icon
+              className={twMerge(
+                "h-4 w-4 flex-shrink-0",
+                isActive(link.href) && "text-sky-500"
+              )}
+            />
+            <span>{t(getTranslationKey(link.href) as any)}</span>
+          </Link>
+        );
+      })}
 
       <Heading as="p" className="text-sm md:text-sm lg:text-sm pt-10 px-2">
-        Socials
+        {t('socials')}
       </Heading>
       {socials.map((link: Navlink) => (
         <Link
@@ -91,8 +114,7 @@ export const Navigation = ({
         >
           <link.icon
             className={twMerge(
-              "h-4 w-4 flex-shrink-0",
-              isActive(link.href) && "text-sky-500"
+              "h-4 w-4 flex-shrink-0"
             )}
           />
           <span>{link.label}</span>
@@ -103,6 +125,8 @@ export const Navigation = ({
 };
 
 const SidebarHeader = () => {
+  const t = useTranslations('Common');
+  
   return (
     <div className="flex space-x-2">
       <Image
@@ -114,8 +138,16 @@ const SidebarHeader = () => {
       />
       <div className="flex text-sm flex-col">
         <p className="font-bold text-primary">John Doe</p>
-        <p className="font-light text-secondary">Developer</p>
+        <p className="font-light text-secondary">{t('developer')}</p>
       </div>
     </div>
   );
+};
+
+const ResumeButton = () => {
+  const t = useTranslations('Navigation');
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'en';
+  
+  return <Badge href={`/${currentLocale}/resume`} text={t('readResume')} />;
 };

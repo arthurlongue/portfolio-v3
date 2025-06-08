@@ -1,13 +1,11 @@
 "use client";
+import { Heading } from "@/components/Heading";
+import { Paragraph } from "@/components/Paragraph";
 import { timeline } from "@/constants/timeline";
-import React from "react";
-import { Paragraph } from "./Paragraph";
-import { Heading } from "./Heading";
 import {
-  IconCheck,
-  IconCheckbox,
-  IconCircleCheckFilled,
+    IconCircleCheckFilled
 } from "@tabler/icons-react";
+import React from "react";
 
 export const WorkHistory = () => {
   return (

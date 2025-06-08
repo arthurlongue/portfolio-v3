@@ -1,0 +1,38 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "articles": "Articles",
+    "contact": "Contact",
+    "socials": "Socials",
+    "readResume": "Read Resume"
+  },
+  "Home": {
+    "greeting": "Hello there! I'm John",
+    "intro1": "I'm a full-stack developer that loves {highlight} and web apps that can impact millions of lives",
+    "buildingProducts": "building products",
+    "intro2": "I'm a senior software engineer with {highlight} building scalable web apps that are performance optimized and good looking.",
+    "experience": "7 years of experience",
+    "workingOn": "What I've been working on"
+  },
+  "About": {
+    "title": "About",
+    "description": "Learn more about John Doe"
+  },
+  "Projects": {
+    "title": "Projects",
+    "description": "Here are some of my projects"
+  },
+  "Blog": {
+    "title": "Articles",
+    "description": "My thoughts on technology and life"
+  },
+  "Contact": {
+    "title": "Contact",
+    "description": "Get in touch with me"
+  },
+  "Common": {
+    "developer": "Developer"
+  }
+}
