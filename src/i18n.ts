@@ -1,12 +1,12 @@
 import { getRequestConfig } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { locales, type Locale } from './i18n-config';
 
 // Can be imported from a shared config
-const locales = ["en", "pt", "de"];
 
-export default getRequestConfig(async ({ locale }) => {
+export default getRequestConfig(async ({ locale }: { locale: Locale }) => {
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) notFound();
+  if (!locales.includes(locale as Locale)) notFound();
 
   return {
     locale,

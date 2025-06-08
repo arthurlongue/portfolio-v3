@@ -5,8 +5,7 @@ import { Paragraph } from "@/components/Paragraph";
 import { Products } from "@/components/Products";
 import { TechStack } from "@/components/TechStack";
 import { useTranslations } from 'next-intl';
-
-const locales = ['en', 'pt', 'de']; // Define locales for generateStaticParams
+import { locales } from '@/i18n-config';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
