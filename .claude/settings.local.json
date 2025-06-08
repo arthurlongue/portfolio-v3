@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(git add:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(claude mcp:*)",
+      "*",
+      "WebFetch(domain:www.claudemcp.com)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(rg:*)",
+      "Bash(claude config set:*)",
+      "Bash(npm config:*)",
+      "Bash(claude --version)",
+      "Bash(npx mcp-sequentialthinking-tools:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm update:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm:*)"
+    ],
+    "deny": []
+  }
+}

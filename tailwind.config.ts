@@ -23,10 +23,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), addVariablesForColors],
-} satisfies Config;
+  plugins: [require("daisyui"), addVariablesForColors],
+};
+export default config;
 
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
@@ -37,5 +37,3 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
-
-export default config;
