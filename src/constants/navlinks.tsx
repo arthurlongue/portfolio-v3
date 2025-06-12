@@ -1,35 +1,29 @@
-import {
-  IconArticle,
-  IconBolt,
-  IconBriefcase2,
-  IconMail,
-  IconMessage2,
-} from "@tabler/icons-react";
+import { Briefcase, FileText, Mail, MessageSquare, Zap } from "lucide-react";
 
 export const navlinks = [
   {
     href: "/",
     label: "Home",
-    icon: IconBolt,
+    icon: Zap,
   },
   {
     href: "/about",
     label: "About",
-    icon: IconMessage2,
+    icon: MessageSquare,
   },
   {
     href: "/projects",
     label: "Projects",
-    icon: IconBriefcase2,
+    icon: Briefcase,
   },
   {
     href: "/blog",
     label: "Articles",
-    icon: IconArticle,
+    icon: FileText,
   },
   {
     href: "/contact",
     label: "Contact",
-    icon: IconMail,
+    icon: Mail,
   },
 ];

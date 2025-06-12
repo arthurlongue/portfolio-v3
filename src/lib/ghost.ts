@@ -29,7 +29,7 @@ export const ghostApi = {
         .fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -42,7 +42,7 @@ export const ghostApi = {
         .fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -55,7 +55,7 @@ export const ghostApi = {
         .fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -75,7 +75,7 @@ export const ghostApi = {
         .fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -88,7 +88,7 @@ export const ghostApi = {
         .fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -102,12 +102,10 @@ export const ghostApi = {
       filter?: string;
       order?: string;
     }) => {
-      const response = await api.authors
-        .browse(options || {})
-        .fetch();
+      const response = await api.authors.browse(options || {}).fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -117,7 +115,7 @@ export const ghostApi = {
       const response = await api.authors.read(options).fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -134,7 +132,7 @@ export const ghostApi = {
       const response = await api.tags.browse(options || {}).fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
@@ -144,24 +142,14 @@ export const ghostApi = {
       const response = await api.tags.read(options).fetch();
 
       if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
+        throw new Error(response.errors.map((e: any) => e.message).join(", "));
       }
 
       return response.data;
     },
   },
 
-  settings: {
-    browse: async () => {
-      const response = await api.settings.browse().fetch();
-
-      if (!response.success) {
-        throw new Error(response.errors.map((e) => e.message).join(", "));
-      }
-
-      return response.data;
-    },
-  },
+  // settings endpoint not supported by @ts-ghost/content-api
 };
 
 // Export Ghost types for convenience
@@ -174,7 +162,7 @@ export const ghostUtils = {
    * @returns A promise that resolves to an array of Post objects.
    */
   getAllPosts: async (): Promise<Post[]> => {
-    return ghostApi.posts.browse({ limit: "all" });
+    return ghostApi.posts.browse({ limit: 1000 });
   },
 
   /**
@@ -191,7 +179,7 @@ export const ghostUtils = {
    * @returns A promise that resolves to an array of Page objects.
    */
   getAllPages: async (): Promise<Page[]> => {
-    return ghostApi.pages.browse({ limit: "all" });
+    return ghostApi.pages.browse({ limit: 1000 });
   },
 
   /**
@@ -208,7 +196,7 @@ export const ghostUtils = {
    * @returns A promise that resolves to an array of Author objects.
    */
   getAllAuthors: async (): Promise<Author[]> => {
-    return ghostApi.authors.browse({ limit: "all" });
+    return ghostApi.authors.browse({ limit: 1000 });
   },
 
   /**
@@ -225,7 +213,7 @@ export const ghostUtils = {
    * @returns A promise that resolves to an array of Tag objects.
    */
   getAllTags: async (): Promise<Tag[]> => {
-    return ghostApi.tags.browse({ limit: "all" });
+    return ghostApi.tags.browse({ limit: 1000 });
   },
 
   /**
@@ -241,9 +229,10 @@ export const ghostUtils = {
    * Fetches the site settings from Ghost CMS.
    * @returns A promise that resolves to a Settings object.
    */
-  getSettings: async (): Promise<Settings> => {
-    return ghostApi.settings.browse();
-  },
+  // getSettings: async (): Promise<Settings> => {
+  //   // Not supported by @ts-ghost/content-api
+  //   throw new Error('Fetching settings is not supported by this API wrapper.');
+  // },
 
   /**
    * Generates a filter string for fetching posts by tag.

@@ -1,13 +1,13 @@
 import "@/app/globals.css";
 import { Footer } from "@/components/Footer";
 import { Sidebar } from "@/components/Sidebar";
+import { locales, type Locale } from "@/i18n-config";
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
 import { twMerge } from "tailwind-merge";
-import { locales, type Locale } from '@/i18n-config';
 
 export function generateStaticParams() {
   // @ts-ignore TODO: fix this type error
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) notFound();

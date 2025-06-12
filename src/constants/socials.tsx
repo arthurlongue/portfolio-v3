@@ -1,23 +1,19 @@
-import {
-  IconBrandLinkedin,
-  IconBrandTwitter,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
+import { Linkedin, Twitter, Youtube } from "lucide-react";
 
 export const socials = [
   {
     href: "https://twitter.com/mannupaaji",
     label: "Twitter",
-    icon: IconBrandTwitter,
+    icon: Twitter,
   },
   {
     href: "https://linkedin.com/in/manuarora28",
     label: "LinkedIn",
-    icon: IconBrandLinkedin,
+    icon: Linkedin,
   },
   {
     href: "https://youtube.com/maninthere",
     label: "YouTube",
-    icon: IconBrandYoutube,
+    icon: Youtube,
   },
 ];

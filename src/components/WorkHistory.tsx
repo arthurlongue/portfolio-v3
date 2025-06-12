@@ -2,9 +2,7 @@
 import { Heading } from "@/components/Heading";
 import { Paragraph } from "@/components/Paragraph";
 import { timeline } from "@/constants/timeline";
-import {
-    IconCircleCheckFilled
-} from "@tabler/icons-react";
+import { CheckCircle2 } from "lucide-react";
 import React from "react";
 
 export const WorkHistory = () => {
@@ -43,7 +41,7 @@ export const WorkHistory = () => {
 const Step = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex space-x-1 items-start my-2">
-      <IconCircleCheckFilled className="h-3 w-4 mt-1 text-neutral-300" />
+      <CheckCircle2 className="h-3 w-4 mt-1 text-neutral-300" />
       <Paragraph className="text-sm md:text-sm lg:text-sm">
         {children}
       </Paragraph>

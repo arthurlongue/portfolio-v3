@@ -1,7 +1,10 @@
-import { TablerIconsProps } from "@tabler/icons-react";
+import { LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export type Navlink = {
   href: string;
   label: string;
-  icon?: React.ReactNode | TablerIconsProps | any;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
 };

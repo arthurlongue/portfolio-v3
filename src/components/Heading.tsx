@@ -1,5 +1,3 @@
-import React from "react";
-
 import localFont from "next/font/local";
 import { twMerge } from "tailwind-merge";
 
@@ -16,8 +14,9 @@ export const Heading = ({
 }: {
   className?: string;
   children: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }) => {
+  if (typeof Tag !== "string") return null;
   return (
     <Tag
       className={twMerge(

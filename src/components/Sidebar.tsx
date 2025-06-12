@@ -1,14 +1,13 @@
 "use client";
 import { Badge } from "@/components/Badge";
 import { Heading } from "@/components/Heading";
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { navlinks } from "@/constants/navlinks";
 import { socials } from "@/constants/socials";
 import { isMobile } from "@/lib/utils";
-import { Navlink } from "@/types/navlink";
-import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useTranslations } from 'next-intl';
+import { Layout } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -48,7 +47,7 @@ export const Sidebar = () => {
         className="fixed lg:hidden bottom-4 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-50"
         onClick={() => setOpen(!open)}
       >
-        <IconLayoutSidebarRightCollapse className="h-4 w-4 text-secondary" />
+        <Layout className="h-4 w-4 text-secondary" />
       </button>
     </>
   );
@@ -60,26 +59,27 @@ export const Navigation = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const pathname = usePathname();
-  const t = useTranslations('Navigation');
+  const t = useTranslations("Navigation");
 
-  const currentLocale = pathname.split('/')[1] || 'en';
+  const currentLocale = pathname.split("/")[1] || "en";
 
   const isActive = (href: string) => {
-    const localizedHref = `/${currentLocale}${href === '/' ? '' : href}`;
+    const localizedHref = `/${currentLocale}${href === "/" ? "" : href}`;
     return pathname === localizedHref;
   };
 
   const getTranslationKey = (href: string) => {
-    if (href === '/') return 'home';
-    const path = href.split('/').pop();
-    if (path === 'blog') return 'articles';
-    return path || 'home';
+    if (href === "/") return "home";
+    const path = href.split("/").pop();
+    if (path === "blog") return "articles";
+    return path || "home";
   };
 
   return (
     <div className="flex flex-col space-y-1 my-10 relative z-[100]">
-      {navlinks.map((link: Navlink) => {
-        const localizedHref = `/${currentLocale}${link.href === '/' ? '' : link.href}`;
+      {navlinks.map((link, idx) => {
+        const localizedHref = `/${currentLocale}${link.href === "/" ? "" : link.href}`;
+        const Icon = link.icon;
         return (
           <Link
             key={link.href}
@@ -90,7 +90,7 @@ export const Navigation = ({
               isActive(link.href) && "bg-white shadow-lg text-primary"
             )}
           >
-            <link.icon
+            <Icon
               className={twMerge(
                 "h-4 w-4 flex-shrink-0",
                 isActive(link.href) && "text-sky-500"
@@ -102,31 +102,30 @@ export const Navigation = ({
       })}
 
       <Heading as="p" className="text-sm md:text-sm lg:text-sm pt-10 px-2">
-        {t('socials')}
+        {t("socials")}
       </Heading>
-      {socials.map((link: Navlink) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={twMerge(
-            "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
-          )}
-        >
-          <link.icon
+      {socials.map((link, idx) => {
+        const Icon = link.icon;
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
             className={twMerge(
-              "h-4 w-4 flex-shrink-0"
+              "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
             )}
-          />
-          <span>{link.label}</span>
-        </Link>
-      ))}
+          >
+            <Icon className={twMerge("h-4 w-4 flex-shrink-0")} />
+            <span>{link.label}</span>
+          </Link>
+        );
+      })}
     </div>
   );
 };
 
 const SidebarHeader = () => {
-  const t = useTranslations('Common');
-  
+  const t = useTranslations("Common");
+
   return (
     <div className="flex space-x-2">
       <Image
@@ -138,16 +137,16 @@ const SidebarHeader = () => {
       />
       <div className="flex text-sm flex-col">
         <p className="font-bold text-primary">John Doe</p>
-        <p className="font-light text-secondary">{t('developer')}</p>
+        <p className="font-light text-secondary">{t("developer")}</p>
       </div>
     </div>
   );
 };
 
 const ResumeButton = () => {
-  const t = useTranslations('Navigation');
+  const t = useTranslations("Navigation");
   const pathname = usePathname();
-  const currentLocale = pathname.split('/')[1] || 'en';
-  
-  return <Badge href={`/${currentLocale}/resume`} text={t('readResume')} />;
+  const currentLocale = pathname.split("/")[1] || "en";
+
+  return <Badge href={`/${currentLocale}/resume`} text={t("readResume")} />;
 };
